@@ -7,33 +7,7 @@ import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-export default function Comment() {
-  const comment = {
-    user: {
-      imageUrl:
-        "https://yt3.googleusercontent.com/FUdEvDEqiyssPrROTDOOKcNMuS01g32jMwI0RxU0vxtDbaU_rjLLWMPeKputWh3M8oXveTGs=s176-c-k-c0x00ffffff-no-rj",
-      username: "@helloworld",
-      name: "hello world",
-    },
-    isEdited: false,
-    isLike: false,
-    isUnlike: false,
-    timeAgo: "2 days ago",
-    detail: `Absolutely love how the anime doesn’t use the opening and the ending as often for extra minutes. And when they do use the ending, they just use it in the background. Masterpiece.`,
-    replies: [
-      {
-        user: {
-          imageUrl:
-            "https://yt3.googleusercontent.com/FUdEvDEqiyssPrROTDOOKcNMuS01g32jMwI0RxU0vxtDbaU_rjLLWMPeKputWh3M8oXveTGs=s176-c-k-c0x00ffffff-no-rj",
-          username: "@helloworld",
-          name: "hello world",
-        },
-        isEdited: false,
-        timeAgo: "2 days ago",
-        detail: `Absolutely love how the anime doesn’t use the opening and the ending as often for extra minutes. And when they do use the ending, they just use it in the background. Masterpiece.`,
-      },
-    ],
-  };
+export default function Comment({ comment }) {
   const [isExpanded, setExpanded] = React.useState(false);
   const [isLike, setIsLike] = React.useState(comment.isLike);
   const [isUnLike, setIsUnLike] = React.useState(comment.isUnlike);
@@ -72,7 +46,7 @@ export default function Comment() {
             Reply
           </Typography>
         </Box>
-        {comment.replies.length > 0 && (
+        {comment.replies?.length > 0 && (
           <IconButton onClick={() => setExpanded((state) => !state)}>
             <ExpandIcon />
             <Typography variant="body2" sx={{ fontWeight: "bold" }}>
@@ -80,7 +54,13 @@ export default function Comment() {
             </Typography>
           </IconButton>
         )}
-        {isExpanded && <Box>reply</Box>}
+        {isExpanded && (
+          <Box>
+            {comment.replies?.map((r) => (
+              <Comment key={r.id} comment={r} />
+            ))}
+          </Box>
+        )}
       </Box>
     </Box>
   );

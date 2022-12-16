@@ -1,11 +1,11 @@
 import Comment from "./Comment";
+import commentsJson from "../data/comments.json";
 
 export default function CommentSection() {
-  const comments = [{}, {}];
   return (
     <div className="section">
-      {comments.map((c) => {
-        return <Comment />;
+      {commentsJson.map((comment) => {
+        return <Comment key={comment.id} comment={comment} />;
       })}
     </div>
   );
