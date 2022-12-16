@@ -36,6 +36,9 @@ export default function Comment({ comment }) {
           <IconButton onClick={() => setIsLike((state) => !state)}>
             <ThumbUpIcon />
           </IconButton>
+          {comment.likecount && (
+            <Typography variant="body2">{comment.likecount}</Typography>
+          )}
           <IconButton
             sx={{ marginLeft: "8px", marginRight: "8px" }}
             onClick={() => setIsUnLike((state) => !state)}

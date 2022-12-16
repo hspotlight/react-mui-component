@@ -6,9 +6,10 @@
       "username": "@helloworld",
       "name": "hello world"
     },
-    "isEdited": false,
+    "isEdited": true,
     "isLike": false,
     "isUnlike": false,
+    "likecount": "4.4K",
     "timeAgo": "2 days ago",
     "detail": "Absolutely love how the anime doesn`t use the opening and the ending as often for extra minutes. And when they do use the ending, they just use it in the background. Masterpiece.",
     "replies": [
@@ -19,10 +20,39 @@
           "username": "@helloworld",
           "name": "hello world"
         },
+        "isUnlike": true,
         "isEdited": false,
         "timeAgo": "2 days ago",
         "detail": "Absolutely love how the anime doesn`t use the opening and the ending as often for extra minutes. And when they do use the ending, they just use it in the background. Masterpiece."
+      },
+      {
+        "id": 3,
+        "user": {
+          "imageUrl": "https://yt3.googleusercontent.com/FUdEvDEqiyssPrROTDOOKcNMuS01g32jMwI0RxU0vxtDbaU_rjLLWMPeKputWh3M8oXveTGs=s176-c-k-c0x00ffffff-no-rj",
+          "username": "@helloworld",
+          "name": "hello world"
+        },
+        "isLike": true,
+        "likecount": "3",
+        "isEdited": true,
+        "timeAgo": "5 days ago",
+        "detail": "Absolutely love how the anime doesn`t use the opening and the ending as often for extra minutes. And when they do use the ending, they just use it in the background. Masterpiece."
       }
     ]
+  },
+  {
+    "id": 4,
+    "user": {
+      "imageUrl": "https://yt3.googleusercontent.com/FUdEvDEqiyssPrROTDOOKcNMuS01g32jMwI0RxU0vxtDbaU_rjLLWMPeKputWh3M8oXveTGs=s176-c-k-c0x00ffffff-no-rj",
+      "username": "@b1b1223aa",
+      "name": "hello world"
+    },
+    "isEdited": true,
+    "isLike": true,
+    "isUnlike": false,
+    "likecount": "200",
+    "timeAgo": "2 days ago",
+    "detail": "Helloworld this is a second comment",
+    "replies": []
   }
 ]
