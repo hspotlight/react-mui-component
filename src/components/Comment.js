@@ -8,32 +8,56 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 export default function Comment() {
+  const comment = {
+    user: {
+      imageUrl:
+        "https://yt3.googleusercontent.com/FUdEvDEqiyssPrROTDOOKcNMuS01g32jMwI0RxU0vxtDbaU_rjLLWMPeKputWh3M8oXveTGs=s176-c-k-c0x00ffffff-no-rj",
+      username: "@helloworld",
+      name: "hello world",
+    },
+    isEdited: false,
+    isLike: false,
+    isUnlike: false,
+    timeAgo: "2 days ago",
+    detail: `Absolutely love how the anime doesn’t use the opening and the ending as often for extra minutes. And when they do use the ending, they just use it in the background. Masterpiece.`,
+    replies: [
+      {
+        user: {
+          imageUrl:
+            "https://yt3.googleusercontent.com/FUdEvDEqiyssPrROTDOOKcNMuS01g32jMwI0RxU0vxtDbaU_rjLLWMPeKputWh3M8oXveTGs=s176-c-k-c0x00ffffff-no-rj",
+          username: "@helloworld",
+          name: "hello world",
+        },
+        isEdited: false,
+        timeAgo: "2 days ago",
+        detail: `Absolutely love how the anime doesn’t use the opening and the ending as often for extra minutes. And when they do use the ending, they just use it in the background. Masterpiece.`,
+      },
+    ],
+  };
   const [isExpanded, setExpanded] = React.useState(false);
-  const [isLike, setIsLike] = React.useState(false);
-  const [isUnLike, setIsUnLike] = React.useState(false);
+  const [isLike, setIsLike] = React.useState(comment.isLike);
+  const [isUnLike, setIsUnLike] = React.useState(comment.isUnlike);
   const ThumbUpIcon = isLike ? ThumbUpAltIcon : ThumbUpAltOutlinedIcon;
   const ThumbDownIcon = isUnLike ? ThumbDownAltIcon : ThumbDownAltOutlinedIcon;
   const ExpandIcon = isExpanded ? ArrowDropUpIcon : ArrowDropDownIcon;
   return (
     <Box sx={{ width: "500px", display: "flex" }}>
       <Avatar
-        alt="Remy Sharp"
-        src="https://yt3.googleusercontent.com/FUdEvDEqiyssPrROTDOOKcNMuS01g32jMwI0RxU0vxtDbaU_rjLLWMPeKputWh3M8oXveTGs=s176-c-k-c0x00ffffff-no-rj"
+        alt={comment.user.name}
+        src={comment.user.imageUrl}
         sx={{ width: 36, height: 36, marginRight: "8px" }}
       />
       <Box>
         <Box sx={{ display: "flex" }}>
           <Typography variant="body2" sx={{ fontWeight: "bold" }}>
-            @helloworld
+            {comment.user.username}
           </Typography>
           &nbsp;
-          <Typography variant="body2">2 days ago (edited)</Typography>
+          <Typography variant="body2">
+            {comment.timeAgo} {comment.isEdited ? "(edited)" : ""}
+          </Typography>
         </Box>
-        <Typography variant="body1">
-          Absolutely love how the anime doesn’t use the opening and the ending
-          as often for extra minutes. And when they do use the ending, they just
-          use it in the background. Masterpiece.
-        </Typography>
+        <Typography variant="body1">{comment.detail}</Typography>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <IconButton onClick={() => setIsLike((state) => !state)}>
             <ThumbUpIcon />
@@ -48,12 +72,15 @@ export default function Comment() {
             Reply
           </Typography>
         </Box>
-        <IconButton onClick={() => setExpanded((state) => !state)}>
-          <ExpandIcon />
-          <Typography variant="body2" sx={{ fontWeight: "bold" }}>
-            41 replies
-          </Typography>
-        </IconButton>
+        {comment.replies.length > 0 && (
+          <IconButton onClick={() => setExpanded((state) => !state)}>
+            <ExpandIcon />
+            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              {comment.replies.length} replies
+            </Typography>
+          </IconButton>
+        )}
+        {isExpanded && <Box>reply</Box>}
       </Box>
     </Box>
   );
